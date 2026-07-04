@@ -186,150 +186,16 @@ const STOCK_NAMES = [
   "中国软件","中粮糖业","中远海控","中金岭南","中色股份","中钢国际","中工国际","深中华A",
 ];
 
-function rand(a, b) { return Math.random() * (b - a) + a; }
-function randInt(a, b) { return Math.floor(rand(a, b + 1)); }
-function round(v, d) { return Math.round(v * Math.pow(10, d)) / Math.pow(10, d); }
-function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
-
-function pick(arr) { return arr[randInt(0, arr.length - 1)]; }
-
-function generateMockData() {
-  const now = new Date();
-  const ts = now.toLocaleString('zh-CN', { hour12: false });
-
-  // ── 400 stocks ──
-  const stocks = [];
-  const mcaps = Array.from({ length: 400 }, () => rand(0.3, 3.0)).sort((a, b) => a - b);
-  for (let i = 0; i < 400; i++) {
-    const price = round(rand(2, 80), 2);
-    const mcap = mcaps[i] * 1e8;
-    const chg = round(rand(-9.8, 10.0), 2);
-    const prefix = pick(["000","002","300","600","603","688"]);
-    const code = prefix + String(randInt(0, 9999)).padStart(6 - prefix.length, '0');
-    const ind = pick(SECONDARY_INDUSTRIES);
-    stocks.push({
-      code: code.slice(0,6), name: STOCK_NAMES[i % STOCK_NAMES.length] || ("微盘" + (i+1)),
-      price, change_pct: chg, market_cap: round(mcap, 0),
-      volume_ratio: round(rand(0.2, 3.0), 2),
-      industry: ind,
-      turnover: mcap * rand(0.005, 0.08) * price / 100,
-      above_20ma: Math.random() > 0.4,
-    });
-  }
-
-  const changes = stocks.map(s => s.change_pct);
-  const prices = stocks.map(s => s.price);
-  const advancing = changes.filter(c => c > 0).length;
-  const declining = changes.filter(c => c < 0).length;
-  const unchanged = 400 - advancing - declining;
-  const adl = advancing - declining;
-
-  // RSI
-  const ratio = advancing / Math.max(declining, 1);
-  let avgRsi = round(50 + 20 * Math.log(clamp(ratio, 0.1, 10)), 1);
-  avgRsi = clamp(avgRsi, 20, 80);
-
-  const avgRet20d = round(changes.reduce((a, b) => a + b, 0) / 400, 2);
-  const avgPrice = round(prices.reduce((a, b) => a + b, 0) / 400, 2);
-
-  // Score
-  let score = (advancing / 400) * 30 + (avgRsi / 100) * 30 +
-    clamp((avgRet20d + 10) / 20, 0, 1) * 20 +
-    clamp(ratio / 5, 0, 1) * 20;
-  score = round(clamp(score, 0, 100), 1);
-
-  let position, posPct, signal;
-  if (score >= 70) { position = "重仓（70%-90%）"; posPct = 80; signal = "强烈看多"; }
-  else if (score >= 55) { position = "中等仓位（40%-70%）"; posPct = 55; signal = "谨慎看多"; }
-  else if (score >= 40) { position = "轻仓（20%-40%）"; posPct = 30; signal = "中性偏弱"; }
-  else if (score >= 25) { position = "极轻仓（10%-20%）"; posPct = 15; signal = "弱势观望"; }
-  else { position = "空仓/回避（0%-10%）"; posPct = 5; signal = "强烈看空"; }
-
-  // Distribution
-  const dist = {"跌停<-9%":0, "-9%~-5%":0, "-5%~-2%":0, "-2%~0%":0,
-    "0%~2%":0, "2%~5%":0, "5%~9%":0, "涨停>9%":0};
-  changes.forEach(c => {
-    if (c <= -9) dist["跌停<-9%"]++;
-    else if (c <= -5) dist["-9%~-5%"]++;
-    else if (c <= -2) dist["-5%~-2%"]++;
-    else if (c <= 0) dist["-2%~0%"]++;
-    else if (c <= 2) dist["0%~2%"]++;
-    else if (c <= 5) dist["2%~5%"]++;
-    else if (c <= 9) dist["5%~9%"]++;
-    else dist["涨停>9%"]++;
-  });
-
-  // Top gainers/losers
-  const sorted = [...stocks].sort((a, b) => b.change_pct - a.change_pct);
-
-  // ── Industry data ──
-  const byInd = {};
-  stocks.forEach(s => {
-    if (!byInd[s.industry]) byInd[s.industry] = { stocks: [], above: 0 };
-    byInd[s.industry].stocks.push(s);
-    if (s.above_20ma) byInd[s.industry].above++;
-  });
-  const totalInd = Object.keys(byInd).length;
-  let aboveMaCount = 0;
-  Object.entries(byInd).forEach(([ind, d]) => {
-    const pct = d.above / d.stocks.length * 100;
-    if (pct > 50) aboveMaCount++;
-  });
-  const breadthPct = round(aboveMaCount / totalInd * 100, 1);
-  const breadthSignal = breadthPct >= 65 ? "普涨" : breadthPct >= 40 ? "分化" : "普跌";
-
-  // Capital concentration
-  const byTurnover = [...stocks].sort((a, b) => b.turnover - a.turnover);
-  const totalTurnover = stocks.reduce((s, st) => s + st.turnover, 0);
-  const top10Count = Math.max(Math.floor(stocks.length / 10), 1);
-  const top10Turnover = byTurnover.slice(0, top10Count).reduce((s, st) => s + st.turnover, 0);
-  const concRatio = round(top10Turnover / Math.max(totalTurnover, 1) * 100, 1);
-  const concSignal = concRatio >= 40 ? "高度集中" : concRatio >= 28 ? "相对集中" : "分散";
-
-  // Industry capital flow
-  const flowAll = SECONDARY_INDUSTRIES.map(ind => ({
-    industry: ind, net_flow_5d: round(rand(-50, 50), 1)
-  }));
-  flowAll.sort((a, b) => b.net_flow_5d - a.net_flow_5d);
-  const topInflow = flowAll.filter(f => f.net_flow_5d > 0).slice(0, 5);
-  const topOutflow = flowAll.filter(f => f.net_flow_5d < 0).slice(-5).reverse();
-
-  // ── History (60 days) ──
-  const days = 60;
-  const dates = [];
-  for (let i = days; i > 0; i--) {
-    const d = new Date(now); d.setDate(d.getDate() - i);
-    dates.push(d.toISOString().slice(0, 10));
-  }
-  let adlHist = [], cumAdl = 0;
-  let rsiHist = [], rsiVal = 50;
-  let retHist = [], avgRet = rand(-3, 3);
-  let breadthHist = [], bVal = rand(40, 60);
-  let concHist = [], cVal = rand(30, 40);
-  for (let i = 0; i < days; i++) {
-    cumAdl += randInt(-150, 180); adlHist.push(cumAdl);
-    rsiVal = clamp(rsiVal + rand(-4, 4), 20, 80); rsiHist.push(round(rsiVal, 1));
-    avgRet = clamp(avgRet + rand(-1.5, 1.5), -15, 15); retHist.push(round(avgRet, 2));
-    bVal = clamp(bVal + rand(-8, 8), 15, 95); breadthHist.push(round(bVal, 1));
-    cVal = clamp(cVal + rand(-3, 3), 20, 55); concHist.push(round(cVal, 1));
-  }
-
-  return {
-    timestamp: ts, total_stocks: 400,
-    summary: { advancing, declining, unchanged, adl, avg_rsi: avgRsi, avg_return_20d: avgRet20d, avg_price: avgPrice },
-    distribution: dist,
-    composite_score: score, signal, position, position_pct: posPct,
-    top_gainers: sorted.slice(0, 10),
-    top_losers: sorted.slice(-10).reverse(),
-    history: { dates, adl: adlHist, avg_rsi: rsiHist, avg_20d_return: retHist, market_breadth: breadthHist, cap_concentration: concHist },
-    industry_data: {
-      industries_above_20ma: aboveMaCount, total_industries: totalInd,
-      breadth_pct: breadthPct, breadth_signal: breadthSignal,
-      capital_concentration: { ratio: concRatio, signal: concSignal, top_10pct_count: top10Count, total_turnover_yi: round(totalTurnover / 1e8, 1) },
-      industry_flow_5d: { top_inflow: topInflow, top_outflow: topOutflow },
-    },
-  };
+// ─── Date-seeded PRNG ────────────────────────────────────────────────
+let _SEED = new Date();
+_SEED = _SEED.getFullYear() * 10000 + (_SEED.getMonth() + 1) * 100 + _SEED.getDate();
+function _srand() {
+  _SEED = (_SEED * 1664525 + 1013904223) & 0x7FFFFFFF;
+  return (_SEED >>> 0) / 0x7FFFFFFF;
 }
+
+function rand(a, b) { return _srand() * (b - a) + a; }
+function randInt(a, b) { return Math.floor(rand(a, b + 1)); }
 
 // ── Render Functions ──
 let charts = {};
