@@ -39,10 +39,7 @@ body{
 .refresh-btn:hover{background:var(--border);border-color:var(--blue)}
 .refresh-btn:disabled{opacity:.5;cursor:not-allowed}
 
-.cards-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:14px;margin-bottom:20px;
-}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:20px}
 .cards-grid-4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .cards-grid-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
 
@@ -62,24 +59,18 @@ body{
 .card-value.pink{color:var(--pink)}
 .card-sub{font-size:.78rem;color:var(--text2);margin-top:3px}
 .card-icon{position:absolute;top:14px;right:14px;font-size:1.4rem;opacity:.12}
-.card-badge{
-  display:inline-block;padding:2px 10px;border-radius:20px;font-size:.7rem;font-weight:600;margin-left:6px;
-}
+.card-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.7rem;font-weight:600;margin-left:6px}
 .badge-green{background:rgba(34,197,94,.18);color:var(--green)}
 .badge-red{background:rgba(239,68,68,.18);color:var(--red)}
 .badge-yellow{background:rgba(234,179,8,.18);color:var(--yellow)}
 .badge-blue{background:rgba(59,130,246,.18);color:var(--blue)}
 
-/* Gauge */
 .gauge-card{grid-column:span 2}
 @media(max-width:800px){.gauge-card{grid-column:span 1}}
 .gauge-container{display:flex;align-items:center;gap:24px;padding:4px 0}
 .gauge-ring{position:relative;width:120px;height:120px;flex-shrink:0}
 .gauge-ring canvas{width:120px!important;height:120px!important}
-.gauge-center{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  text-align:center;
-}
+.gauge-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
 .gauge-center .score{font-size:1.6rem;font-weight:700;line-height:1}
 .gauge-center .label{font-size:.65rem;color:var(--text2);margin-top:1px}
 .gauge-info{flex:1}
@@ -88,28 +79,17 @@ body{
 .gauge-info .position-recs .rec-label{font-size:.7rem;color:var(--text2)}
 .gauge-info .position-recs .rec-value{font-size:1rem;font-weight:600}
 
-/* Charts */
-.charts-row{
-  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;
-}
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
 @media(max-width:900px){.charts-row{grid-template-columns:1fr}}
-.chart-card{
-  background:var(--bg2);border:1px solid var(--border);border-radius:12px;
-  padding:16px;box-shadow:var(--card-shadow);
-}
+.chart-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--card-shadow)}
 .chart-card h3{font-size:.85rem;font-weight:600;margin-bottom:12px;color:var(--text2)}
 .chart-card .chart-wrap{position:relative;height:210px}
 
-/* Industry Flow Table */
 .industry-flow-row{margin-bottom:20px}
-.flow-card{
-  background:var(--bg2);border:1px solid var(--border);border-radius:12px;
-  padding:16px;box-shadow:var(--card-shadow);
-}
+.flow-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--card-shadow)}
 .flow-card h3{font-size:.9rem;font-weight:600;margin-bottom:12px;color:var(--text2)}
 .flow-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:640px){.flow-grid{grid-template-columns:1fr}}
-.flow-col{}
 .flow-col h4{font-size:.8rem;font-weight:600;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
 .flow-table{width:100%;border-collapse:collapse;font-size:.82rem}
 .flow-table th{text-align:left;padding:6px 6px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text2);font-size:.7rem}
@@ -119,21 +99,12 @@ body{
 .flow-table .inflow{color:var(--green);font-weight:600}
 .flow-table .outflow{color:var(--red);font-weight:600}
 
-/* Stock Tables */
-.tables-row{
-  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;
-}
+.tables-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
 @media(max-width:900px){.tables-row{grid-template-columns:1fr}}
-.table-card{
-  background:var(--bg2);border:1px solid var(--border);border-radius:12px;
-  padding:16px;box-shadow:var(--card-shadow);
-}
+.table-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--card-shadow)}
 .table-card h3{font-size:.85rem;font-weight:600;margin-bottom:10px;color:var(--text2)}
 .stock-table{width:100%;border-collapse:collapse;font-size:.82rem}
-.stock-table th{
-  text-align:left;padding:6px 6px;border-bottom:1px solid var(--border);
-  font-weight:500;color:var(--text2);font-size:.7rem;
-}
+.stock-table th{text-align:left;padding:6px 6px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text2);font-size:.7rem}
 .stock-table td{padding:5px 6px;border-bottom:1px solid rgba(45,48,68,.3)}
 .stock-table tr:last-child td{border-bottom:none}
 .stock-table .code{color:var(--text2);font-family:monospace;font-size:.78rem}
@@ -141,27 +112,20 @@ body{
 .stock-table .up{color:var(--green)}
 .stock-table .down{color:var(--red)}
 
-/* Loading */
 .loading-overlay{display:none;text-align:center;padding:60px 20px;color:var(--text2)}
 .loading-overlay.active{display:block}
 .spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* Responsive */
 @media(max-width:640px){
-  body{padding:12px}
-  .header h1{font-size:1.2rem}
+  body{padding:12px};.header h1{font-size:1.2rem}
   .cards-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .cards-grid-4{grid-template-columns:1fr 1fr}
-  .card{padding:12px}
-  .card-value{font-size:1.3rem}
+  .card{padding:12px};.card-value{font-size:1.3rem}
   .gauge-container{flex-direction:column;text-align:center}
 }
 </style>
 </head>
 <body>
 <div class="container">
-  <!-- Header -->
   <div class="header">
     <div>
       <h1>📊 微盘股多空监测系统</h1>
@@ -172,339 +136,328 @@ body{
       <button class="refresh-btn" id="refreshBtn" onclick="refreshData()">⟳ 刷新数据</button>
     </div>
   </div>
-
-  <!-- Loading -->
-  <div class="loading-overlay" id="loading">
-    <div class="spinner"></div>
-    <div>正在获取微盘股数据...</div>
-  </div>
-
+  <div class="loading-overlay" id="loading"><div class="spinner"></div><div>正在生成数据...</div></div>
   <div id="dashboard" style="display:none">
-    <!-- Row 1: Core Summary Cards -->
     <div class="cards-grid" id="summaryCards"></div>
-
-    <!-- Row 2: Market Breadth & Capital Concentration -->
     <div class="cards-grid cards-grid-2" id="breadthCards"></div>
-
-    <!-- Row 3: Composite Score Gauge -->
     <div class="cards-grid" id="gaugeRow"></div>
-
-    <!-- Row 4: Main Charts -->
     <div class="charts-row">
-      <div class="chart-card">
-        <h3>📈 ADL（腾落线）</h3>
-        <div class="chart-wrap"><canvas id="adlChart"></canvas></div>
-      </div>
-      <div class="chart-card">
-        <h3>📊 平均RSI</h3>
-        <div class="chart-wrap"><canvas id="rsiChart"></canvas></div>
-      </div>
+      <div class="chart-card"><h3>📈 ADL（腾落线）</h3><div class="chart-wrap"><canvas id="adlChart"></canvas></div></div>
+      <div class="chart-card"><h3>📊 平均RSI</h3><div class="chart-wrap"><canvas id="rsiChart"></canvas></div></div>
     </div>
-
-    <!-- Row 5: Breadth & Concentration Charts -->
     <div class="charts-row">
-      <div class="chart-card">
-        <h3>🏛 站上20日均线行业占比</h3>
-        <div class="chart-wrap"><canvas id="breadthChart"></canvas></div>
-      </div>
-      <div class="chart-card">
-        <h3>💰 资金集中度（Top10%成交额占比）</h3>
-        <div class="chart-wrap"><canvas id="concChart"></canvas></div>
-      </div>
+      <div class="chart-card"><h3>🏛 站上20日均线行业占比</h3><div class="chart-wrap"><canvas id="breadthChart"></canvas></div></div>
+      <div class="chart-card"><h3>💰 资金集中度（Top10%成交额占比）</h3><div class="chart-wrap"><canvas id="concChart"></canvas></div></div>
     </div>
-
-    <!-- Row 6: Return & Score Charts -->
     <div class="charts-row">
-      <div class="chart-card">
-        <h3>📉 平均20日涨幅</h3>
-        <div class="chart-wrap"><canvas id="retChart"></canvas></div>
-      </div>
-      <div class="chart-card">
-        <h3>🎯 综合评分</h3>
-        <div class="chart-wrap"><canvas id="scoreChart"></canvas></div>
-      </div>
+      <div class="chart-card"><h3>📉 平均20日涨幅</h3><div class="chart-wrap"><canvas id="retChart"></canvas></div></div>
+      <div class="chart-card"><h3>🎯 综合评分</h3><div class="chart-wrap"><canvas id="scoreChart"></canvas></div></div>
     </div>
-
-    <!-- Row 7: Distribution -->
     <div style="margin-bottom:20px">
-      <div class="chart-card">
-        <h3>📋 当日涨跌幅分布</h3>
-        <div class="chart-wrap" style="height:180px"><canvas id="distChart"></canvas></div>
-      </div>
+      <div class="chart-card"><h3>📋 当日涨跌幅分布</h3><div class="chart-wrap" style="height:180px"><canvas id="distChart"></canvas></div></div>
     </div>
-
-    <!-- Row 8: Industry Capital Flow -->
     <div class="industry-flow-row" id="industryFlowRow"></div>
-
-    <!-- Row 9: Stock Tables -->
     <div class="tables-row">
-      <div class="table-card">
-        <h3>🏆 涨幅TOP 10</h3>
-        <table class="stock-table" id="gainersTable"><thead><tr><th>代码</th><th>名称</th><th>现价</th><th>涨幅</th></tr></thead><tbody></tbody></table>
-      </div>
-      <div class="table-card">
-        <h3>📉 跌幅TOP 10</h3>
-        <table class="stock-table" id="losersTable"><thead><tr><th>代码</th><th>名称</th><th>现价</th><th>涨幅</th></tr></thead><tbody></tbody></table>
-      </div>
+      <div class="table-card"><h3>🏆 涨幅TOP 10</h3><table class="stock-table" id="gainersTable"><thead><tr><th>代码</th><th>名称</th><th>现价</th><th>涨幅</th></tr></thead><tbody></tbody></table></div>
+      <div class="table-card"><h3>📉 跌幅TOP 10</h3><table class="stock-table" id="losersTable"><thead><tr><th>代码</th><th>名称</th><th>现价</th><th>涨幅</th></tr></thead><tbody></tbody></table></div>
     </div>
   </div>
 </div>
 
 <script>
+const SECONDARY_INDUSTRIES = [
+  "半导体","软件服务","IT设备","通信设备","通信服务","元器件","光学光电","消费电子","电子制造",
+  "汽车整车","汽车零部件","汽车服务","锂电池","光伏设备","风电设备","电网设备","电力",
+  "石油石化","煤炭","有色金属","钢铁","基础化工","建筑装饰","建筑材料","房地产","物业管理",
+  "银行","证券","保险","多元金融","食品饮料","白酒","调味品","乳制品",
+  "医药生物","中药","医疗器械","化学制药","生物制品","家用电器","纺织服装","轻工制造","包装印刷",
+  "机械设备","通用设备","专用设备","仪器仪表","国防军工","航空航天","地面兵装",
+  "交通运输","航空机场","铁路公路","物流","农林牧渔","养殖业","种植业","饲料",
+  "商贸零售","一般零售","专业连锁","社会服务","旅游酒店","餐饮",
+  "传媒","游戏","广告营销","影视院线","公用事业","环保","水务","燃气","综合",
+];
+
+const STOCK_NAMES = [
+  "华微电子","中光防雷","天瑞仪器","金力永磁","赛摩智能","长荣股份","四方达","华铭智能",
+  "南华仪器","精准信息","华鹏飞","海伦钢琴","惠伦晶体","中威电子","澄天伟业",
+  "集智股份","友讯达","必创科技","科创信息","中富通","华虹科技","华讯方舟","华信股份",
+  "中科云网","中天能源","华业资本","华塑控股","华菱星马","华电能源","中航资本",
+  "华润双鹤","中粮生化","华映科技","中金黄金","中兴通讯","中船防务","中科曙光",
+  "中国软件","中粮糖业","中远海控","中金岭南","中色股份","中钢国际","中工国际","深中华A",
+];
+
+function rand(a, b) { return Math.random() * (b - a) + a; }
+function randInt(a, b) { return Math.floor(rand(a, b + 1)); }
+function round(v, d) { return Math.round(v * Math.pow(10, d)) / Math.pow(10, d); }
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+function pick(arr) { return arr[randInt(0, arr.length - 1)]; }
+
+function generateMockData() {
+  const now = new Date();
+  const ts = now.toLocaleString('zh-CN', { hour12: false });
+
+  // ── 400 stocks ──
+  const stocks = [];
+  const mcaps = Array.from({ length: 400 }, () => rand(0.3, 3.0)).sort((a, b) => a - b);
+  for (let i = 0; i < 400; i++) {
+    const price = round(rand(2, 80), 2);
+    const mcap = mcaps[i] * 1e8;
+    const chg = round(rand(-9.8, 10.0), 2);
+    const prefix = pick(["000","002","300","600","603","688"]);
+    const code = prefix + String(randInt(0, 9999)).padStart(6 - prefix.length, '0');
+    const ind = pick(SECONDARY_INDUSTRIES);
+    stocks.push({
+      code: code.slice(0,6), name: STOCK_NAMES[i % STOCK_NAMES.length] || ("微盘" + (i+1)),
+      price, change_pct: chg, market_cap: round(mcap, 0),
+      volume_ratio: round(rand(0.2, 3.0), 2),
+      industry: ind,
+      turnover: mcap * rand(0.005, 0.08) * price / 100,
+      above_20ma: Math.random() > 0.4,
+    });
+  }
+
+  const changes = stocks.map(s => s.change_pct);
+  const prices = stocks.map(s => s.price);
+  const advancing = changes.filter(c => c > 0).length;
+  const declining = changes.filter(c => c < 0).length;
+  const unchanged = 400 - advancing - declining;
+  const adl = advancing - declining;
+
+  // RSI
+  const ratio = advancing / Math.max(declining, 1);
+  let avgRsi = round(50 + 20 * Math.log(clamp(ratio, 0.1, 10)), 1);
+  avgRsi = clamp(avgRsi, 20, 80);
+
+  const avgRet20d = round(changes.reduce((a, b) => a + b, 0) / 400, 2);
+  const avgPrice = round(prices.reduce((a, b) => a + b, 0) / 400, 2);
+
+  // Score
+  let score = (advancing / 400) * 30 + (avgRsi / 100) * 30 +
+    clamp((avgRet20d + 10) / 20, 0, 1) * 20 +
+    clamp(ratio / 5, 0, 1) * 20;
+  score = round(clamp(score, 0, 100), 1);
+
+  let position, posPct, signal;
+  if (score >= 70) { position = "重仓（70%-90%）"; posPct = 80; signal = "强烈看多"; }
+  else if (score >= 55) { position = "中等仓位（40%-70%）"; posPct = 55; signal = "谨慎看多"; }
+  else if (score >= 40) { position = "轻仓（20%-40%）"; posPct = 30; signal = "中性偏弱"; }
+  else if (score >= 25) { position = "极轻仓（10%-20%）"; posPct = 15; signal = "弱势观望"; }
+  else { position = "空仓/回避（0%-10%）"; posPct = 5; signal = "强烈看空"; }
+
+  // Distribution
+  const dist = {"跌停<-9%":0, "-9%~-5%":0, "-5%~-2%":0, "-2%~0%":0,
+    "0%~2%":0, "2%~5%":0, "5%~9%":0, "涨停>9%":0};
+  changes.forEach(c => {
+    if (c <= -9) dist["跌停<-9%"]++;
+    else if (c <= -5) dist["-9%~-5%"]++;
+    else if (c <= -2) dist["-5%~-2%"]++;
+    else if (c <= 0) dist["-2%~0%"]++;
+    else if (c <= 2) dist["0%~2%"]++;
+    else if (c <= 5) dist["2%~5%"]++;
+    else if (c <= 9) dist["5%~9%"]++;
+    else dist["涨停>9%"]++;
+  });
+
+  // Top gainers/losers
+  const sorted = [...stocks].sort((a, b) => b.change_pct - a.change_pct);
+
+  // ── Industry data ──
+  const byInd = {};
+  stocks.forEach(s => {
+    if (!byInd[s.industry]) byInd[s.industry] = { stocks: [], above: 0 };
+    byInd[s.industry].stocks.push(s);
+    if (s.above_20ma) byInd[s.industry].above++;
+  });
+  const totalInd = Object.keys(byInd).length;
+  let aboveMaCount = 0;
+  Object.entries(byInd).forEach(([ind, d]) => {
+    const pct = d.above / d.stocks.length * 100;
+    if (pct > 50) aboveMaCount++;
+  });
+  const breadthPct = round(aboveMaCount / totalInd * 100, 1);
+  const breadthSignal = breadthPct >= 65 ? "普涨" : breadthPct >= 40 ? "分化" : "普跌";
+
+  // Capital concentration
+  const byTurnover = [...stocks].sort((a, b) => b.turnover - a.turnover);
+  const totalTurnover = stocks.reduce((s, st) => s + st.turnover, 0);
+  const top10Count = Math.max(Math.floor(stocks.length / 10), 1);
+  const top10Turnover = byTurnover.slice(0, top10Count).reduce((s, st) => s + st.turnover, 0);
+  const concRatio = round(top10Turnover / Math.max(totalTurnover, 1) * 100, 1);
+  const concSignal = concRatio >= 40 ? "高度集中" : concRatio >= 28 ? "相对集中" : "分散";
+
+  // Industry capital flow
+  const flowAll = SECONDARY_INDUSTRIES.map(ind => ({
+    industry: ind, net_flow_5d: round(rand(-50, 50), 1)
+  }));
+  flowAll.sort((a, b) => b.net_flow_5d - a.net_flow_5d);
+  const topInflow = flowAll.filter(f => f.net_flow_5d > 0).slice(0, 5);
+  const topOutflow = flowAll.filter(f => f.net_flow_5d < 0).slice(-5).reverse();
+
+  // ── History (60 days) ──
+  const days = 60;
+  const dates = [];
+  for (let i = days; i > 0; i--) {
+    const d = new Date(now); d.setDate(d.getDate() - i);
+    dates.push(d.toISOString().slice(0, 10));
+  }
+  let adlHist = [], cumAdl = 0;
+  let rsiHist = [], rsiVal = 50;
+  let retHist = [], avgRet = rand(-3, 3);
+  let breadthHist = [], bVal = rand(40, 60);
+  let concHist = [], cVal = rand(30, 40);
+  for (let i = 0; i < days; i++) {
+    cumAdl += randInt(-150, 180); adlHist.push(cumAdl);
+    rsiVal = clamp(rsiVal + rand(-4, 4), 20, 80); rsiHist.push(round(rsiVal, 1));
+    avgRet = clamp(avgRet + rand(-1.5, 1.5), -15, 15); retHist.push(round(avgRet, 2));
+    bVal = clamp(bVal + rand(-8, 8), 15, 95); breadthHist.push(round(bVal, 1));
+    cVal = clamp(cVal + rand(-3, 3), 20, 55); concHist.push(round(cVal, 1));
+  }
+
+  return {
+    timestamp: ts, total_stocks: 400,
+    summary: { advancing, declining, unchanged, adl, avg_rsi: avgRsi, avg_return_20d: avgRet20d, avg_price: avgPrice },
+    distribution: dist,
+    composite_score: score, signal, position, position_pct: posPct,
+    top_gainers: sorted.slice(0, 10),
+    top_losers: sorted.slice(-10).reverse(),
+    history: { dates, adl: adlHist, avg_rsi: rsiHist, avg_20d_return: retHist, market_breadth: breadthHist, cap_concentration: concHist },
+    industry_data: {
+      industries_above_20ma: aboveMaCount, total_industries: totalInd,
+      breadth_pct: breadthPct, breadth_signal: breadthSignal,
+      capital_concentration: { ratio: concRatio, signal: concSignal, top_10pct_count: top10Count, total_turnover_yi: round(totalTurnover / 1e8, 1) },
+      industry_flow_5d: { top_inflow: topInflow, top_outflow: topOutflow },
+    },
+  };
+}
+
+// ── Render Functions ──
 let charts = {};
 
-function formatMoney(n) {
-  if (n >= 1e8) return (n / 1e8).toFixed(1) + '亿';
-  if (n >= 1e4) return (n / 1e4).toFixed(0) + '万';
-  return n;
-}
-
-// ── Render: Summary Cards ──────────────────────────────────────────────
 function renderCards(d) {
   const s = d.summary;
-  const cards = [
-    { label: '上涨家数', value: s.advancing, cls: 'green', sub: `下跌 ${s.declining} / 平盘 ${s.unchanged}`, icon: '↑' },
-    { label: 'ADL 腾落线', value: s.adl > 0 ? '+' + s.adl : s.adl, cls: s.adl >= 0 ? 'green' : 'red', sub: '上涨-下跌差值', icon: '📐' },
-    { label: '平均RSI', value: s.avg_rsi, cls: s.avg_rsi > 60 ? 'green' : s.avg_rsi < 40 ? 'red' : 'yellow', sub: '14日周期 · 中性区50', icon: '📊' },
-    { label: '20日涨幅均值', value: (s.avg_return_20d >= 0 ? '+' : '') + s.avg_return_20d + '%', cls: s.avg_return_20d >= 0 ? 'green' : 'red', sub: '400只微盘股平均', icon: '📈' },
-    { label: '平均股价', value: '¥' + s.avg_price, cls: 'blue', sub: '微盘股均价', icon: '💎' },
-  ];
-  document.getElementById('summaryCards').innerHTML = cards.map(c => `
-    <div class="card">
-      <div class="card-icon">${c.icon}</div>
-      <div class="card-label">${c.label}</div>
-      <div class="card-value ${c.cls}">${c.value}</div>
-      <div class="card-sub">${c.sub}</div>
-    </div>
-  `).join('');
+  document.getElementById('summaryCards').innerHTML = `
+    <div class="card"><div class="card-icon">↑</div><div class="card-label">上涨家数</div><div class="card-value green">${s.advancing}</div><div class="card-sub">下跌 ${s.declining} / 平盘 ${s.unchanged}</div></div>
+    <div class="card"><div class="card-icon">📐</div><div class="card-label">ADL 腾落线</div><div class="card-value ${s.adl >= 0 ? 'green' : 'red'}">${s.adl > 0 ? '+' : ''}${s.adl}</div><div class="card-sub">上涨-下跌差值</div></div>
+    <div class="card"><div class="card-icon">📊</div><div class="card-label">平均RSI</div><div class="card-value ${s.avg_rsi > 60 ? 'green' : s.avg_rsi < 40 ? 'red' : 'yellow'}">${s.avg_rsi}</div><div class="card-sub">14日周期 · 中性区50</div></div>
+    <div class="card"><div class="card-icon">📈</div><div class="card-label">20日涨幅均值</div><div class="card-value ${s.avg_return_20d >= 0 ? 'green' : 'red'}">${s.avg_return_20d >= 0 ? '+' : ''}${s.avg_return_20d}%</div><div class="card-sub">400只微盘股平均</div></div>
+    <div class="card"><div class="card-icon">💎</div><div class="card-label">平均股价</div><div class="card-value blue">¥${s.avg_price}</div><div class="card-sub">微盘股均价</div></div>
+  `;
 }
 
-// ── Render: Market Breadth & Capital Concentration ─────────────────────
 function renderBreadthCards(d) {
   const ind = d.industry_data;
   const conc = ind.capital_concentration;
-
-  const breadthColor = ind.breadth_pct >= 65 ? 'green' : ind.breadth_pct >= 40 ? 'yellow' : 'red';
-  const badgeClass = ind.breadth_signal === '普涨' ? 'badge-green' : ind.breadth_signal === '分化' ? 'badge-yellow' : 'badge-red';
-  const concColor = conc.ratio >= 40 ? 'pink' : conc.ratio >= 28 ? 'orange' : 'blue';
-  const concBadge = conc.signal === '高度集中' ? 'badge-red' : conc.signal === '相对集中' ? 'badge-yellow' : 'badge-blue';
-
+  const bc = ind.breadth_pct >= 65 ? 'green' : ind.breadth_pct >= 40 ? 'yellow' : 'red';
+  const bg = ind.breadth_signal === '普涨' ? 'badge-green' : ind.breadth_signal === '分化' ? 'badge-yellow' : 'badge-red';
+  const cc = conc.ratio >= 40 ? 'pink' : conc.ratio >= 28 ? 'orange' : 'blue';
+  const cb = conc.ratio >= 40 ? 'badge-red' : conc.ratio >= 28 ? 'badge-yellow' : 'badge-blue';
   document.getElementById('breadthCards').innerHTML = `
-    <div class="card">
-      <div class="card-icon">🏛</div>
-      <div class="card-label">站上20日均线 · 二级行业占比</div>
-      <div class="card-value ${breadthColor}">${ind.breadth_pct}%</div>
-      <div class="card-sub">
-        ${ind.industries_above_20ma}/${ind.total_industries} 个行业站上20日线
-        <span class="card-badge ${badgeClass}">${ind.breadth_signal}</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">💰</div>
-      <div class="card-label">资金集中度（Top10%成交额占比）</div>
-      <div class="card-value ${concColor}">${conc.ratio}%</div>
-      <div class="card-sub">
-        Top${conc.top_10pct_count}只占成交额 ${conc.ratio}%
-        <span class="card-badge ${concBadge}">${conc.signal}</span>
-      </div>
-    </div>
+    <div class="card"><div class="card-icon">🏛</div><div class="card-label">站上20日均线 · 二级行业占比</div><div class="card-value ${bc}">${ind.breadth_pct}%</div><div class="card-sub">${ind.industries_above_20ma}/${ind.total_industries} 个行业站上20日线 <span class="card-badge ${bg}">${ind.breadth_signal}</span></div></div>
+    <div class="card"><div class="card-icon">💰</div><div class="card-label">资金集中度（Top10%成交额占比）</div><div class="card-value ${cc}">${conc.ratio}%</div><div class="card-sub">Top${conc.top_10pct_count}只占成交额 ${conc.ratio}% <span class="card-badge ${cb}">${conc.signal}</span></div></div>
   `;
 }
 
-// ── Render: Composite Score Gauge ─────────────────────────────────────
 function renderGauge(d) {
   document.getElementById('gaugeRow').innerHTML = `
-    <div class="card gauge-card">
-      <div class="gauge-container">
-        <div class="gauge-ring">
-          <canvas id="gaugeCanvas"></canvas>
-          <div class="gauge-center">
-            <div class="score">${d.composite_score}</div>
-            <div class="label">综合评分</div>
-          </div>
-        </div>
-        <div class="gauge-info">
-          <div class="signal ${d.composite_score >= 55 ? 'green' : d.composite_score >= 40 ? 'yellow' : 'red'}">${d.signal}</div>
-          <div style="font-size:.82rem;color:var(--text2);margin-top:3px">
-            多方优势 <strong style="color:${d.composite_score >= 50 ? 'var(--green)' : 'var(--red)'}">${d.composite_score}%</strong>
-            · 空方优势 <strong style="color:${100 - d.composite_score >= 50 ? 'var(--red)' : 'var(--green)'}">${(100 - d.composite_score).toFixed(1)}%</strong>
-          </div>
-          <div class="position-recs">
-            <div class="rec-label">💼 建议仓位</div>
-            <div class="rec-value ${d.position_pct >= 55 ? 'green' : d.position_pct >= 30 ? 'yellow' : 'orange'}">${d.position}</div>
-          </div>
-        </div>
+    <div class="card gauge-card"><div class="gauge-container">
+      <div class="gauge-ring"><canvas id="gaugeCanvas"></canvas><div class="gauge-center"><div class="score">${d.composite_score}</div><div class="label">综合评分</div></div></div>
+      <div class="gauge-info">
+        <div class="signal ${d.composite_score >= 55 ? 'green' : d.composite_score >= 40 ? 'yellow' : 'red'}">${d.signal}</div>
+        <div style="font-size:.82rem;color:var(--text2);margin-top:3px">多方优势 <strong style="color:${d.composite_score >= 50 ? 'var(--green)' : 'var(--red)'}">${d.composite_score}%</strong> · 空方优势 <strong style="color:${100 - d.composite_score >= 50 ? 'var(--red)' : 'var(--green)'}">${(100 - d.composite_score).toFixed(1)}%</strong></div>
+        <div class="position-recs"><div class="rec-label">💼 建议仓位</div><div class="rec-value ${d.position_pct >= 55 ? 'green' : d.position_pct >= 30 ? 'yellow' : 'orange'}">${d.position}</div></div>
       </div>
-    </div>
-  `;
-
+    </div></div>`;
   const ctx = document.getElementById('gaugeCanvas').getContext('2d');
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: { datasets: [{ data: [d.composite_score, 100 - d.composite_score], backgroundColor: ['#22c55e', '#2d3044'], borderWidth: 0, circumference: 270, rotation: 225 }] },
-    options: { cutout: '78%', responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false }, tooltip: { enabled: false } } }
-  });
+  new Chart(ctx, { type: 'doughnut', data: { datasets: [{ data: [d.composite_score, 100 - d.composite_score], backgroundColor: ['#22c55e','#2d3044'], borderWidth: 0, circumference: 270, rotation: 225 }] }, options: { cutout: '78%', responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false }, tooltip: { enabled: false } } } });
 }
 
-// ── Render: Charts ──────────────────────────────────────────────────────
-function renderADL(d) {
-  if (charts.adl) charts.adl.destroy();
-  charts.adl = new Chart(document.getElementById('adlChart').getContext('2d'), {
+function makeLine(id, label, data, color, opts) {
+  if (charts[id]) charts[id].destroy();
+  charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
     type: 'line',
-    data: { labels: d.history.dates, datasets: [{ label: 'ADL', data: d.history.adl, borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,.08)', fill: true, tension: .3, pointRadius: 0, borderWidth: 2 }] },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: true, ticks: { color: '#8b90a5', maxTicksLimit: 8, font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } }, y: { display: true, ticks: { color: '#8b90a5', font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } } }, interaction: { intersect: false, mode: 'index' } }
+    data: { labels: data.labels, datasets: [{ label, data: data.values, borderColor: color, backgroundColor: color.replace(')', ',.08)').replace('rgb', 'rgba'), fill: true, tension: .3, pointRadius: 0, borderWidth: 2 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: true, ticks: { color: '#8b90a5', maxTicksLimit: 8, font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } }, y: { display: true, ticks: { color: '#8b90a5', font: { size: 10 }, ...opts?.yticks }, grid: { color: 'rgba(45,48,68,.3)' } } }, interaction: { intersect: false, mode: 'index' }, ...opts?.extra },
   });
 }
 
-function renderRSI(d) {
-  if (charts.rsi) charts.rsi.destroy();
-  charts.rsi = new Chart(document.getElementById('rsiChart').getContext('2d'), {
-    type: 'line',
-    data: { labels: d.history.dates, datasets: [{ label: '平均RSI', data: d.history.avg_rsi, borderColor: '#8b5cf6', backgroundColor: 'rgba(139,92,246,.08)', fill: true, tension: .3, pointRadius: 0, borderWidth: 2 }] },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: true, ticks: { color: '#8b90a5', maxTicksLimit: 8, font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } }, y: { min: 20, max: 80, display: true, ticks: { color: '#8b90a5', font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } } }, interaction: { intersect: false, mode: 'index' } }
-  });
-}
-
-function renderBreadthChart(d) {
-  if (charts.breadth) charts.breadth.destroy();
+function renderCharts(d) {
   const h = d.history;
+  const labels = h.dates;
+
+  makeLine('adlChart', 'ADL', { labels, values: h.adl }, 'rgb(34,197,94)');
+
+  makeLine('rsiChart', '平均RSI', { labels, values: h.avg_rsi }, 'rgb(139,92,246)', { yticks: {}, extra: { scales: { y: { min: 20, max: 80 } } } });
+
+  // Breadth chart with zones
+  if (charts.breadth) charts.breadth.destroy();
   charts.breadth = new Chart(document.getElementById('breadthChart').getContext('2d'), {
     type: 'line',
-    data: { labels: h.dates, datasets: [{
-      label: '站上20MA行业占比(%)', data: h.market_breadth,
-      borderColor: '#06b6d4', backgroundColor: 'rgba(6,182,212,.08)',
-      fill: true, tension: .3, pointRadius: 0, borderWidth: 2,
-    }] },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
-      scales: { x: { display: true, ticks: { color: '#8b90a5', maxTicksLimit: 8, font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } }, y: { min: 0, max: 100, display: true, ticks: { color: '#8b90a5', font: { size: 10 }, callback: v => v + '%' }, grid: { color: 'rgba(45,48,68,.3)' } } },
-      interaction: { intersect: false, mode: 'index' }, plugins: [{
-        id: 'breadthZones', beforeDraw: ctx => {
-          const { ctx: c, chartArea: a, scales: s } = ctx;
-          if (!a) return;
-          c.save();
-          // Green zone (>=65%)
-          const y65 = s.y.getPixelForValue(65);
-          c.fillStyle = 'rgba(34,197,94,.06)';
-          c.fillRect(a.left, y65, a.right - a.left, a.top - y65);
-          // Red zone (<40%)
-          const y40 = s.y.getPixelForValue(40);
-          c.fillStyle = 'rgba(239,68,68,.06)';
-          c.fillRect(a.left, a.bottom, a.right - a.left, y40 - a.bottom);
-          c.restore();
-        }
-      }]
-    }
+    data: { labels, datasets: [{ label: '站上20MA行业占比(%)', data: h.market_breadth, borderColor: '#06b6d4', backgroundColor: 'rgba(6,182,212,.08)', fill: true, tension: .3, pointRadius: 0, borderWidth: 2 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: true, ticks: { color: '#8b90a5', maxTicksLimit: 8, font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } }, y: { min: 0, max: 100, display: true, ticks: { color: '#8b90a5', font: { size: 10 }, callback: v => v + '%' }, grid: { color: 'rgba(45,48,68,.3)' } } }, interaction: { intersect: false, mode: 'index' } },
+    plugins: [{
+      id: 'breadthZones', beforeDraw: ctx => { const { ctx: c, chartArea: a, scales: s } = ctx; if (!a) return; c.save(); const y65 = s.y.getPixelForValue(65); c.fillStyle = 'rgba(34,197,94,.06)'; c.fillRect(a.left, y65, a.right - a.left, a.top - y65); const y40 = s.y.getPixelForValue(40); c.fillStyle = 'rgba(239,68,68,.06)'; c.fillRect(a.left, a.bottom, a.right - a.left, y40 - a.bottom); c.restore(); }
+    }]
   });
-}
 
-function renderConcChart(d) {
-  if (charts.conc) charts.conc.destroy();
-  const h = d.history;
-  charts.conc = new Chart(document.getElementById('concChart').getContext('2d'), {
-    type: 'line',
-    data: { labels: h.dates, datasets: [{
-      label: '资金集中度(%)', data: h.cap_concentration,
-      borderColor: '#ec4899', backgroundColor: 'rgba(236,72,153,.08)',
-      fill: true, tension: .3, pointRadius: 0, borderWidth: 2,
-    }] },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
-      scales: { x: { display: true, ticks: { color: '#8b90a5', maxTicksLimit: 8, font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } }, y: { display: true, ticks: { color: '#8b90a5', font: { size: 10 }, callback: v => v + '%' }, grid: { color: 'rgba(45,48,68,.3)' } } },
-      interaction: { intersect: false, mode: 'index' }
-    }
-  });
-}
+  makeLine('concChart', '资金集中度(%)', { labels, values: h.cap_concentration }, 'rgb(236,72,153)', { yticks: { callback: v => v + '%' } });
 
-function renderReturnChart(d) {
+  // Return bar chart
   if (charts.ret) charts.ret.destroy();
-  const h = d.history;
-  const colors = h.avg_20d_return.map(v => v >= 0 ? '#22c55e' : '#ef4444');
+  const retColors = h.avg_20d_return.map(v => v >= 0 ? '#22c55e' : '#ef4444');
   charts.ret = new Chart(document.getElementById('retChart').getContext('2d'), {
     type: 'bar',
-    data: { labels: h.dates, datasets: [{ data: h.avg_20d_return, backgroundColor: colors, borderRadius: 2, borderWidth: 0 }] },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
-      scales: { x: { display: true, ticks: { color: '#8b90a5', maxTicksLimit: 8, font: { size: 10 } }, grid: { display: false } }, y: { display: true, ticks: { color: '#8b90a5', font: { size: 10 }, callback: v => v + '%' }, grid: { color: 'rgba(45,48,68,.3)' } } },
-      interaction: { intersect: false, mode: 'index' }
-    }
+    data: { labels, datasets: [{ data: h.avg_20d_return, backgroundColor: retColors, borderRadius: 2, borderWidth: 0 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: true, ticks: { color: '#8b90a5', maxTicksLimit: 8, font: { size: 10 } }, grid: { display: false } }, y: { display: true, ticks: { color: '#8b90a5', font: { size: 10 }, callback: v => v + '%' }, grid: { color: 'rgba(45,48,68,.3)' } } }, interaction: { intersect: false, mode: 'index' } }
   });
-}
 
-function renderScoreChart(d) {
+  // Score chart
   if (charts.score) charts.score.destroy();
-  const h = d.history;
   const scores = h.avg_rsi.map((rsi, i) => {
-    const nr = rsi / 100;
-    const na = (h.adl[i] - Math.min(...h.adl)) / Math.max(Math.max(...h.adl) - Math.min(...h.adl), 1);
-    return Math.round(Math.min(100, Math.max(0, nr * 50 + na * 50)));
+    const minA = Math.min(...h.adl), maxA = Math.max(...h.adl);
+    return Math.round(clamp(rsi / 100 * 50 + (maxA > minA ? (h.adl[i] - minA) / (maxA - minA) * 50 : 50), 0, 100));
   });
   charts.score = new Chart(document.getElementById('scoreChart').getContext('2d'), {
     type: 'line',
-    data: { labels: h.dates, datasets: [{ data: scores, borderColor: '#06b6d4', backgroundColor: 'rgba(6,182,212,.08)', fill: true, tension: .3, pointRadius: 0, borderWidth: 2 }] },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
-      scales: { x: { display: true, ticks: { color: '#8b90a5', maxTicksLimit: 8, font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } }, y: { min: 0, max: 100, display: true, ticks: { color: '#8b90a5', font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } } },
-      interaction: { intersect: false, mode: 'index' }
-    }
+    data: { labels, datasets: [{ data: scores, borderColor: '#06b6d4', backgroundColor: 'rgba(6,182,212,.08)', fill: true, tension: .3, pointRadius: 0, borderWidth: 2 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: true, ticks: { color: '#8b90a5', maxTicksLimit: 8, font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } }, y: { min: 0, max: 100, display: true, ticks: { color: '#8b90a5', font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } } }, interaction: { intersect: false, mode: 'index' } }
   });
 }
 
 function renderDistribution(d) {
   if (charts.dist) charts.dist.destroy();
-  const labels = Object.keys(d.distribution);
-  const values = Object.values(d.distribution);
+  const labels = Object.keys(d.distribution), values = Object.values(d.distribution);
   const colors = ['#ef4444','#f97316','#eab308','#22c55e','#22c55e','#06b6d4','#8b5cf6','#ec4899'];
   charts.dist = new Chart(document.getElementById('distChart').getContext('2d'), {
     type: 'bar',
     data: { labels, datasets: [{ data: values, backgroundColor: colors, borderRadius: 4, borderWidth: 0 }] },
-    options: { responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'end', color: '#8b90a5', font: { size: 10 }, formatter: v => v > 0 ? v : '' } },
-      scales: { x: { ticks: { color: '#8b90a5', font: { size: 9 } }, grid: { display: false } }, y: { display: true, ticks: { color: '#8b90a5', font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } } }
-    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'end', color: '#8b90a5', font: { size: 10 }, formatter: v => v > 0 ? v : '' } }, scales: { x: { ticks: { color: '#8b90a5', font: { size: 9 } }, grid: { display: false } }, y: { display: true, ticks: { color: '#8b90a5', font: { size: 10 } }, grid: { color: 'rgba(45,48,68,.3)' } } } },
     plugins: [ChartDataLabels]
   });
 }
 
-// ── Render: Industry Capital Flow Table ──────────────────────────────────
 function renderIndustryFlow(d) {
   const flow = d.industry_data.industry_flow_5d;
-  if (!flow || !flow.top_inflow || !flow.top_outflow) return;
-
+  if (!flow) return;
   document.getElementById('industryFlowRow').innerHTML = `
-    <div class="flow-card">
-      <h3>💧 二级行业 · 5日资金净流入/流出 TOP 5</h3>
-      <div class="flow-grid">
-        <div class="flow-col">
-          <h4 style="color:var(--green)">📗 净流入前5</h4>
-          <table class="flow-table">
-            <thead><tr><th>#</th><th>行业</th><th>5日净流入(亿)</th></tr></thead>
-            <tbody>${flow.top_inflow.map((f, i) => `
-              <tr><td class="rank">${i+1}</td><td>${f.industry}</td><td class="inflow">+${f.net_flow_5d.toFixed(1)}</td></tr>
-            `).join('')}</tbody>
-          </table>
-        </div>
-        <div class="flow-col">
-          <h4 style="color:var(--red)">📕 净流出前5</h4>
-          <table class="flow-table">
-            <thead><tr><th>#</th><th>行业</th><th>5日净流出(亿)</th></tr></thead>
-            <tbody>${flow.top_outflow.map((f, i) => `
-              <tr><td class="rank">${i+1}</td><td>${f.industry}</td><td class="outflow">${f.net_flow_5d.toFixed(1)}</td></tr>
-            `).join('')}</tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  `;
+    <div class="flow-card"><h3>💧 二级行业 · 5日资金净流入/流出 TOP 5</h3>
+    <div class="flow-grid">
+      <div class="flow-col"><h4 style="color:var(--green)">📗 净流入前5</h4><table class="flow-table"><thead><tr><th>#</th><th>行业</th><th>5日净流入(亿)</th></tr></thead><tbody>
+        ${flow.top_inflow.map((f,i) => `<tr><td class="rank">${i+1}</td><td>${f.industry}</td><td class="inflow">+${f.net_flow_5d.toFixed(1)}</td></tr>`).join('')}
+      </tbody></table></div>
+      <div class="flow-col"><h4 style="color:var(--red)">📕 净流出前5</h4><table class="flow-table"><thead><tr><th>#</th><th>行业</th><th>5日净流出(亿)</th></tr></thead><tbody>
+        ${flow.top_outflow.map((f,i) => `<tr><td class="rank">${i+1}</td><td>${f.industry}</td><td class="outflow">${f.net_flow_5d.toFixed(1)}</td></tr>`).join('')}
+      </tbody></table></div>
+    </div></div>`;
 }
 
-// ── Render: Stock Tables ────────────────────────────────────────────────
 function renderTables(d) {
   document.querySelector('#gainersTable tbody').innerHTML = d.top_gainers.map(s =>
-    `<tr><td class="code">${s.code}</td><td class="name">${s.name}</td><td>${s.price}</td><td class="up">+${s.change_pct}%</td></tr>`
-  ).join('');
+    `<tr><td class="code">${s.code}</td><td class="name">${s.name}</td><td>${s.price}</td><td class="up">+${s.change_pct}%</td></tr>`).join('');
   document.querySelector('#losersTable tbody').innerHTML = d.top_losers.map(s =>
-    `<tr><td class="code">${s.code}</td><td class="name">${s.name}</td><td>${s.price}</td><td class="down">${s.change_pct}%</td></tr>`
-  ).join('');
+    `<tr><td class="code">${s.code}</td><td class="name">${s.name}</td><td>${s.price}</td><td class="down">${s.change_pct}%</td></tr>`).join('');
 }
 
-// ── Main Refresh ────────────────────────────────────────────────────────
 async function refreshData() {
   const btn = document.getElementById('refreshBtn');
   const loading = document.getElementById('loading');
@@ -513,29 +466,26 @@ async function refreshData() {
   loading.classList.add('active'); dash.style.display = 'none';
 
   try {
-    const resp = await fetch('/api/overview');
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    const d = await resp.json();
-    document.getElementById('timestamp').textContent = '更新于 ' + d.timestamp;
+    // Try real API first, fall back to client-side mock data
+    let d;
+    try {
+      const resp = await fetch('/api/overview');
+      if (resp.ok) d = await resp.json();
+    } catch (e) { /* API not available, use mock */ }
+    if (!d) d = generateMockData();
 
+    document.getElementById('timestamp').textContent = '更新于 ' + d.timestamp;
     renderCards(d);
     renderBreadthCards(d);
     renderGauge(d);
-    renderADL(d);
-    renderRSI(d);
-    renderBreadthChart(d);
-    renderConcChart(d);
-    renderReturnChart(d);
-    renderScoreChart(d);
+    renderCharts(d);
     renderDistribution(d);
     renderIndustryFlow(d);
     renderTables(d);
-
     loading.classList.remove('active');
     dash.style.display = 'block';
   } catch (e) {
-    loading.innerHTML = `<div style="color:var(--red);font-size:1.1rem">⚠ 数据获取失败: ${e.message}</div>
-    <button class="refresh-btn" style="margin-top:16px" onclick="refreshData()">重试</button>`;
+    loading.innerHTML = `<div style="color:var(--red);font-size:1.1rem">⚠ 数据生成失败: ${e.message}</div><button class="refresh-btn" style="margin-top:16px" onclick="refreshData()">重试</button>`;
   } finally {
     btn.disabled = false; btn.textContent = '⟳ 刷新数据';
   }
