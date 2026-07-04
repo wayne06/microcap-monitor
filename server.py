@@ -2,6 +2,7 @@
 """A-share Micro-cap Stock Monitor — Tencent API + East Money fallback"""
 
 import json, math, random, re, subprocess, time, os
+import requests
 from datetime import datetime, timedelta
 from typing import Optional
 
@@ -26,13 +27,12 @@ HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 # A-share stock code ranges that likely contain micro-cap stocks (prioritized)
 STOCK_RANGES = [
-    ("sz", (300001, 301000)),     # ChiNext (创业板)
-    ("sz", (301000, 302000)),     # ChiNext (newer)
-    ("sz", (2001, 3000)),         # SME board (中小板)
-    ("sz", (530, 1700)),          # Shenzhen main (small caps)
-    ("sh", (600200, 605999)),     # Shanghai main
-    ("sz", (1001, 2000)),         # Shenzhen main
-    ("sh", (688001, 689500)),     # STAR board (科创板)
+    ("sz300", 1, 1000),      # 300001-300999 ChiNext
+    ("sz301", 0, 999),        # 301000-302000 ChiNext newer
+    ("sz002", 1, 1000),       # 002001-002999 SME
+    ("sz000", 530, 1700),     # 000530-001699 Shenzhen main
+    ("sh600", 100, 6000),     # 600100-605999 Shanghai main
+    ("sh688", 1, 1500),       # 688001-689500 STAR
 ]
 
 # ─── Data Fetching ───────────────────────────────────────────────────────
@@ -128,45 +128,44 @@ def _fetch_stock_list_from_tencent():
     """Scan stock code ranges via Tencent API to find micro-cap stocks."""
     all_stocks = []
     total_to_scan = 0
-    for mkt, (lo, hi) in STOCK_RANGES:
-        total_to_scan += hi - lo
-
-    scanned = 0
-    for mkt, (lo, hi) in STOCK_RANGES:
+    for mkt_slug, start, count in STOCK_RANGES:
         batch_codes = []
-        for i in range(lo, hi):
-            code = f"{i:06d}" if i <= 999999 else str(i)
-            # Handle 002xxx range (need to pad correctly)
-            if lo < 10000:
-                code = f"002{i:04d}"
-            elif lo >= 530 and lo < 10000:
-                code = f"000{i:04d}"
-            batch_codes.append(f"{mkt}{code}")
-            scanned += 1
-
+        for offset in range(count):
+            num = start + offset
+            if mkt_slug == "sz300":
+                code = f"sz{300000 + num:06d}"
+            elif mkt_slug == "sz301":
+                code = f"sz{301000 + num:06d}"
+            elif mkt_slug == "sz002":
+                code = f"sz002{offset+1:03d}"
+                # handle gaps in 002xxx properly
+            elif mkt_slug == "sz000":
+                code = f"sz{start+offset:06d}"
+            elif mkt_slug == "sh600":
+                code = f"sh{600100+offset:06d}"
+            elif mkt_slug == "sh688":
+                code = f"sh{688001+offset:06d}"
+            else:
+                continue
+            batch_codes.append(code)
             if len(batch_codes) >= 150:
                 text = _query_tencent(",".join(batch_codes))
                 all_stocks.extend(_parse_tencent_quote(text))
                 batch_codes = []
                 time.sleep(0.05)
-
         if batch_codes:
             text = _query_tencent(",".join(batch_codes))
             all_stocks.extend(_parse_tencent_quote(text))
-
-        # If we already have enough stocks, we can stop early
         if len(all_stocks) >= MICRO_CAP_COUNT * 2:
             break
 
-    print(f"  Scanned ~{scanned} codes, found {len(all_stocks)} valid stocks")
-
-    # Sort by market cap ascending, take smallest
+    print(f"  Scanned {sum(c for _,_,c in STOCK_RANGES)} codes, found {len(all_stocks)} valid stocks")
     all_stocks.sort(key=lambda s: s["market_cap"])
     micro = all_stocks[:MICRO_CAP_COUNT]
     if micro:
-        print(f"  Micro-cap {len(micro)}: {micro[0]['code']} {micro[0]['name']} {micro[0]['market_cap']/1e8:.2f}亿")
-        print(f"    ~ {micro[-1]['code']} {micro[-1]['name']} {micro[-1]['market_cap']/1e8:.2f}亿")
+        print(f"  Micro-cap {len(micro)}: {micro[0][chr(39)+chr(39)+'code'+chr(39)+chr(39)]} {micro[0][chr(39)+chr(39)+'name'+chr(39)+chr(39)]} {micro[0][chr(39)+chr(39)+'market_cap'+chr(39)+chr(39)]/1e8:.2f}亿 ~ {micro[-1][chr(39)+chr(39)+'code'+chr(39)+chr(39)]} {micro[-1][chr(39)+chr(39)+'name'+chr(39)+chr(39)]} {micro[-1][chr(39)+chr(39)+'market_cap'+chr(39)+chr(39)]/1e8:.2f}亿")
     return micro
+
 
 
 def _fetch_klines_batch(stocks, days=65):
